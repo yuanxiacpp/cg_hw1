@@ -103,19 +103,16 @@ void updateYellow(int &r, int &g, int &b) {
   if (r < 256 && g < 256 && b < 256)
     return;
 
-  int r_start = min(r, 255);
-  int g_start = min(g, 255);
-  int b_start = min(b, 255);
+  r = min(r, 255);
+  g = min(g, 255);
+  b = min(b, 255);
   
-  for (int i = r_start; i < 256; ++i)
-    for (int j = g_start; j < 256; j++)
-      for (int k = b_start; k < 256; k++) {
-	double tmp = getLuminance(i, j, k);
-	if (tmp >= 2*y && isYellow(i, j, k)) {
-	  r = i;
-	  g = j;
-	  b = k;
-	}  
+  for (;r < 255; r++)
+    for (; g < 255; g++)
+      for (; b < 255; b++) {
+	double tmp = getLuminance(r, g, b);
+	if (tmp >= 2*y) 
+	  return;
       }
        
   
@@ -169,7 +166,9 @@ int main(int argc, char* argv[]) {
       //getchar();
 
       if (isYellow(h, s, l)) {
+	//cout << r << "," << g << "," << b << " => ";
 	updateYellow(r, g, b);
+	//cout << r << "," << g << "," << b << endl;
 	image[idx] = r;
 	image[idx+1] = g;
 	image[idx+2] = b;
