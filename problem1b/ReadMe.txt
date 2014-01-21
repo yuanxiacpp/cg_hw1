@@ -7,6 +7,7 @@
 	The color_detection.tiff was the result of color detection, all the blue pixels in the original image are converted into (255, 255, 0), and all the yellow pixels are converted into (0, 0, 255). 
 
 2. Change of Luminance
-	Half the luminance of blue pixels is easy, my algorithm just divided pixel's r, g, b value by 2, and it is guaranteed that the r, g, b values are still valid.
-	Double the luminance of yellow needs one more step to validate the r, g, b values. If r, g, b values are all valid after double themselves, then nothing needs to be done. Otherwise, my algorithm will perform a brute force search in valid r, g, b space that will double the luminance. If no valid result was found, the r, g, b will become (255, 255, 255)
-	As result shows, almost all yellow pixels turned to white.
+	Half the luminance of blue pixels is easy, my algorithm just divided current pixel's r, g, b value by 2, and it is guaranteed that the r, g, b values are still valid.
+	Double the luminance of yellow needs one more step to validate the r, g, b values. If r, g, b values are all valid after double themselves, then nothing needs to be done. Otherwise, my algorithm will perform a brute force search in valid r, g, b space that will double the luminance. If no valid result was found, the r, g, b will become (255, 255, 255) eventually
+	As result shows, almost all yellow pixels turned to white
+	The reason I choose this method to double the luminance is that this guarantees r, g, b values to be valid and meanwhile also guarantees the luminance could be doubled if there exists one.
