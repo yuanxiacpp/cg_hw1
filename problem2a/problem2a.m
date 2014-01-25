@@ -19,6 +19,7 @@ function  result = problem2a(image_name)
     
     result = cat(3, rImage, gImage, bImage);
 
+    imwrite(result, 'output.tif');
     
 end
 
