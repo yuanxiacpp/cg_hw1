@@ -1,9 +1,9 @@
 1. How Yellow and Blue was detected
-	I didn't use RGB value to determine blue and yellow because it seems to that the change of RGB value doesn't correspond intuitively with the actual color. Hence I decide to use HSL coordinates to check color instead.
-	I used the online tool here(http://hslpicker.com/) to decide a range of coordinates that I think, by viewing colors with my eyes), are appropriate to use as ranges to determine blue and yellow.
+	I didn't use RGB value to determine blue and yellow because it seems to me that the change of RGB value doesn't correspond intuitively with the actual color. Hence I decide to use HSL coordinates to check color instead.
+	I used the online tool here(http://hslpicker.com/) to decide a range of coordinates that I think, by viewing colors with my eyes, are appropriate to use as ranges to determine blue and yellow.
 	For yellow, the hue should fall in [50, 65], for blue the hue should fall in [220, 250].
 	But only checking hue produces one problem, some of the shadows in the image will be treated as blue. 
-	Hence, saturation and lightness was introduced to rule out those dark and bright areas. 
+	Hence, saturation and lightness were introduced to rule out those dark and bright areas. 
 	The color_detection.tiff was the result of color detection, all the blue pixels in the original image are converted into (255, 255, 0), and all the yellow pixels are converted into (0, 0, 255). 
 
 2. Change of Luminance
